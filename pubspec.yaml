@@ -5,17 +5,48 @@ description: A new Flutter project.
 environment: 
   sdk: '>=2.19.3 <3.0.0'
 
-dependencies: 
+dependencies:
+  cached_network_image: ^3.2.3
+  camera: ^0.10.3+2
+  cloud_firestore: ^4.4.4
   cupertino_icons: ^1.0.2
-  get: 4.6.5
-  flutter: 
+  firebase_analytics: ^10.1.5
+  firebase_auth: ^4.2.10
+  firebase_core: ^2.7.1
+  flutter:
     sdk: flutter
+  flutter_svg: ^2.0.2
+  fluttertoast: ^8.2.1
+  geocoding: ^2.1.0
+  geolocator: ^9.0.2
+  get: ^4.6.5
+  get_storage: ^2.1.1
+  google_maps_flutter: ^2.2.5
+  iconly: ^1.0.1
+  iconsax: ^0.0.8
+  image_picker: ^0.8.7
+  intl: ^0.17.0
+  path: ^1.8.2
+  path_provider: ^2.0.13
+  persistent_bottom_nav_bar: ^5.0.2
+  syncfusion_flutter_charts: ^20.4.54
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: 2.0.1
-  flutter_test: 
+  flutter_test:
     sdk: flutter
 
-flutter: 
+flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: DM Sans
+      fonts:
+        - asset: assets/fonts/DMSans-Regular.ttf
+        - asset: assets/fonts/DMSans-Italic.ttf
+        - asset: assets/fonts/DMSans-Medium.ttf
+        - asset: assets/fonts/DMSans-MediumItalic.ttf
+        - asset: assets/fonts/DMSans-Bold.ttf
+        - asset: assets/fonts/DMSans-BoldItalic.ttf
 

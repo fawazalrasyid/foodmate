@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344791553497",
+    "project_id": "foodmate-7c3df",
+    "storage_bucket": "foodmate-7c3df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344791553497:android:64305eadca16f0c12eb5c8",
+        "android_client_info": {
+          "package_name": "com.fawazalrasyid.foodmate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344791553497-krkr6cohmsvs2d2csc4fa3lcq7trs4op.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwj20I5t3EGcPGiN0ouDIMVM9RA-Ywxmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344791553497-krkr6cohmsvs2d2csc4fa3lcq7trs4op.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
