@@ -8,6 +8,8 @@ import '../modules/form_pick_up/bindings/form_pick_up_binding.dart';
 import '../modules/form_pick_up/views/form_pick_up_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/journal_history/bindings/journal_history_binding.dart';
+import '../modules/journal_history/views/journal_history_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
@@ -18,6 +20,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/program/bindings/program_binding.dart';
 import '../modules/program/views/program_view.dart';
+import '../modules/resto/bindings/resto_binding.dart';
+import '../modules/resto/views/resto_view.dart';
 import '../modules/scan/bindings/scan_binding.dart';
 import '../modules/scan/views/scan_view.dart';
 import '../modules/scan_result/bindings/scan_result_binding.dart';
@@ -108,6 +112,16 @@ class AppPages {
       name: _Paths.FOOD,
       page: () => const FoodView(),
       binding: FoodBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESTO,
+      page: () => const RestoView(),
+      binding: RestoBinding(),
+    ),
+    GetPage(
+      name: _Paths.JOURNAL_HISTORY,
+      page: () => const JournalHistoryView(),
+      binding: JournalHistoryBinding(),
     ),
   ];
 }

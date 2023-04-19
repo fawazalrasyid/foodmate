@@ -248,7 +248,7 @@ class AddToJournalView extends GetView<AddToJournalController> {
                     const SizedBox(width: 16),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => Get.toNamed(Routes.JOURNAL_HISTORY),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.colorPrimary,
                           elevation: 0,

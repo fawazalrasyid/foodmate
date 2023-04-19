@@ -48,13 +48,13 @@ class MainController extends GetxController {
         inactiveColorPrimary: AppColors.navbarIconColor,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Iconsax.activity),
+        icon: const Icon(Iconsax.scanning),
         title: ("Food"),
         activeColorPrimary: AppColors.selectedNavbarIconColor,
         inactiveColorPrimary: AppColors.navbarIconColor,
       ),
       PersistentBottomNavBarItem(
-        icon: const Icon(Iconsax.profile_circle),
+        icon: const Icon(Iconsax.user),
         title: ("Profile"),
         activeColorPrimary: AppColors.selectedNavbarIconColor,
         inactiveColorPrimary: AppColors.navbarIconColor,

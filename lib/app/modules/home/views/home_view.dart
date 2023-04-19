@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:foodmate/app/core/values/app_values.dart';
+import 'package:foodmate/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
 import 'package:foodmate/app/core/values/app_colors.dart';
@@ -91,8 +91,8 @@ class HomeView extends GetView<HomeController> {
                                         MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
-                                    children: const [
-                                      Text(
+                                    children: [
+                                      const Text(
                                         "NutriMate",
                                         style: TextStyle(
                                           color: Color(0xff030319),
@@ -100,12 +100,16 @@ class HomeView extends GetView<HomeController> {
                                           fontWeight: FontWeight.w700,
                                         ),
                                       ),
-                                      Text(
-                                        "Lihat Riwayat",
-                                        style: TextStyle(
-                                          color: AppColors.textPrimaryColor,
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w700,
+                                      GestureDetector(
+                                        onTap: () =>
+                                            Get.toNamed(Routes.JOURNAL_HISTORY),
+                                        child: const Text(
+                                          "Lihat Riwayat",
+                                          style: TextStyle(
+                                            color: AppColors.textPrimaryColor,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -132,7 +136,7 @@ class HomeView extends GetView<HomeController> {
                                             children: [
                                               Text(
                                                 "${controller.userDailyJournal['calorie'] ?? 0}",
-                                                textAlign: TextAlign.center,
+                                                textAlign: TextAlign.end,
                                                 style: const TextStyle(
                                                   color: Color(0xff030319),
                                                   fontSize: 32,
@@ -141,7 +145,7 @@ class HomeView extends GetView<HomeController> {
                                               ),
                                               const Text(
                                                 " kcal",
-                                                textAlign: TextAlign.center,
+                                                // textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Color(0xff030319),
                                                   fontSize: 14,
@@ -320,8 +324,8 @@ class HomeView extends GetView<HomeController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Rekomendasi Resto Sehat",
                       style: TextStyle(
                         color: Color(0xff030319),
@@ -330,14 +334,19 @@ class HomeView extends GetView<HomeController> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(width: 46),
-                    Text(
-                      "Lihat Semua",
-                      style: TextStyle(
-                        color: AppColors.textPrimaryColor,
-                        fontSize: 12,
-                        fontFamily: "DM Sans",
-                        fontWeight: FontWeight.w700,
+                    const SizedBox(width: 46),
+                    GestureDetector(
+                      onTap: () => Get.toNamed(Routes.RESTO, arguments: [
+                        {"resto": controller.resto.value},
+                      ]),
+                      child: const Text(
+                        "Lihat Semua",
+                        style: TextStyle(
+                          color: AppColors.textPrimaryColor,
+                          fontSize: 12,
+                          fontFamily: "DM Sans",
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],

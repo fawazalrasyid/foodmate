@@ -23,6 +23,8 @@ abstract class Routes {
   static const ADD_TO_JOURNAL = _Paths.ADD_TO_JOURNAL;
   static const PROGRAM = _Paths.PROGRAM;
   static const FOOD = _Paths.FOOD;
+  static const RESTO = _Paths.RESTO;
+  static const JOURNAL_HISTORY = _Paths.JOURNAL_HISTORY;
 }
 
 abstract class _Paths {
@@ -45,4 +47,6 @@ abstract class _Paths {
   static const ADD_TO_JOURNAL = '/add-to-journal';
   static const PROGRAM = '/program';
   static const FOOD = '/food';
+  static const RESTO = '/resto';
+  static const JOURNAL_HISTORY = '/journal-history';
 }

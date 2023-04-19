@@ -21,73 +21,72 @@ class ProfileView extends GetView<ProfileController> {
         child: Column(
           children: [
             Container(
-              width: Get.width,
-              padding: const EdgeInsets.all(
-                AppValues.padding,
-              ),
+              padding: const EdgeInsets.all(AppValues.padding),
               color: AppColors.colorPrimary,
-              child: Column(
-                children: [
-                  const SizedBox(height: 48),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.white,
-                        ),
-                        child: Container(
-                          width: 20,
-                          height: 20,
-                          padding: const EdgeInsets.all(2),
-                          child: Icon(
-                            Icons.settings,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    width: Get.width * 0.3,
-                    height: Get.width * 0.3,
-                    child: SvgPicture.asset(
-                      'assets/images/avatar.svg',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      SizedBox(
-                        width: 184,
-                        child: Text(
-                          "${controller.user!.displayName}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
                             color: Colors.white,
-                            fontSize: 24,
-                            fontFamily: "DM Sans",
-                            fontWeight: FontWeight.w700,
+                          ),
+                          child: Container(
+                            width: 20,
+                            height: 20,
+                            padding: const EdgeInsets.all(2),
+                            child: const Icon(
+                              Icons.settings,
+                            ),
                           ),
                         ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: Get.width * 0.3,
+                      height: Get.width * 0.3,
+                      child: SvgPicture.asset(
+                        'assets/images/avatar.svg',
+                        fit: BoxFit.cover,
                       ),
-                      Text(
-                        "Bergabung sejang ${DateFormat('d MMMM yyyy').format(controller.user!.metadata.creationTime!)}",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xffe7eaf2),
-                          fontSize: 12,
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 184,
+                          child: Text(
+                            "${controller.user!.displayName}",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontFamily: "DM Sans",
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
                         ),
-                      )
-                    ],
-                  )
-                ],
+                        Text(
+                          "Bergabung sejak ${DateFormat('d MMMM yyyy').format(controller.user!.metadata.creationTime!)}",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Color(0xffe7eaf2),
+                            fontSize: 12,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Container(
               width: Get.width,
               padding: const EdgeInsets.symmetric(
@@ -109,13 +108,13 @@ class ProfileView extends GetView<ProfileController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      width: 40,
-                      height: 40,
+                      width: 42,
+                      height: 42,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Color(0xffe7eaf2),
+                        color: const Color(0xffe7eaf2),
                       ),
-                      child: Container(
+                      child: const SizedBox(
                         width: 20,
                         height: 20,
                         child: Icon(
@@ -124,8 +123,8 @@ class ProfileView extends GetView<ProfileController> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 16),
-                    Text(
+                    const SizedBox(width: 16),
+                    const Text(
                       "Keluar Akun",
                       textAlign: TextAlign.center,
                       style: TextStyle(
