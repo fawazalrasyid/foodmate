@@ -83,8 +83,6 @@ class HomeController extends GetxController {
     }
 
     dailyCalorieIntake.value = bmr.roundToDouble();
-
-    debugPrint("hehe $bmr");
   }
 
   void getUserDailyjournal() async {
