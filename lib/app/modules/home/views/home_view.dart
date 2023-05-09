@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:foodmate/app/core/values/app_colors.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
+import '../../../core/utils/helpers.dart';
 import '../../../core/widget/medium_card.dart';
 import '../../../data/model/resto_recommendation_response_model.dart';
 import '../controllers/home_controller.dart';
@@ -370,7 +371,7 @@ class HomeView extends GetView<HomeController> {
                             name: controller.resto.value![index].name!,
                             image: controller
                                     .resto.value![index].photos!.isNotEmpty
-                                ? controller.getRestoPhoto(controller.resto
+                                ? getPhotoFromGmap(controller.resto
                                     .value![index].photos!.first.photoReference)
                                 : "https://lh5.googleusercontent.com/p/AF1QipP9fSLK3eLQHrX8hFeQd3JdZek1O9Woz0FAQbXo=w408-h306-k-no",
                           );

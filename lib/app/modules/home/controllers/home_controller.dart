@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' hide Position;
 
-import '../../../core/configs/constants.dart';
 import '../../../data/model/chart_model.dart';
 import '../../../data/model/resto_recommendation_response_model.dart';
 
@@ -139,6 +138,7 @@ class HomeController extends GetxController {
           msg: 'Location services are disabled. Please enable the services');
       return false;
     }
+
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
@@ -147,7 +147,10 @@ class HomeController extends GetxController {
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      return false;
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.deniedForever) {
+        return false;
+      }
     }
     return true;
   }
@@ -173,12 +176,5 @@ class HomeController extends GetxController {
     if (response != null) {
       resto.value = response.results;
     }
-  }
-
-  getRestoPhoto(String? ref) {
-    final url =
-        "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$ref&sensor=false&key=${Constants.mapsApiKey}";
-
-    return url;
   }
 }
