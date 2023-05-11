@@ -48,8 +48,10 @@ abstract class AppColors {
   static const Color iconrColor = Color(0xFFD8DCDF);
   static const Color selectedIconColor = colorPrimary;
 
-  static const Color tabBarColor = Color(0xFF98ACD1);
-  static const Color selectedTabBarColor = Color(0xffff6e49);
+  static const Color tabBarColor = Color(0xFFe7eaf2);
+  static const Color selectedTabBarColor = Color(0xff25293C);
+  static const Color tabBarTextColor = Color(0xFF030319);
+  static const Color selectedTabBarTextColor = Color(0xffFFFFFF);
 
   static const Color navbarIconColor = Color(0xFFD8DCDF);
   static const Color selectedNavbarIconColor = colorPrimary;

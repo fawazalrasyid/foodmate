@@ -2,11 +2,9 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:foodmate/app/core/values/app_values.dart';
 
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
-import 'package:foodmate/app/routes/app_pages.dart';
 
 import '../../../core/values/app_colors.dart';
 import '../controllers/scan_controller.dart';
@@ -19,7 +17,7 @@ class ScanView extends GetView<ScanController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        extendBodyBehindAppBar: true,
+        // extendBodyBehindAppBar: true,
         // appBar: AppBar(
         //   backgroundColor: Colors.transparent,
         //   elevation: 0,
@@ -46,21 +44,6 @@ class ScanView extends GetView<ScanController> {
                             fit: BoxFit.cover,
                           ),
               ),
-              // CameraView(
-              //   title: 'Object Detector',
-              //   text: controller.textFood.value,
-              //   onImage: (inputImage) {
-              //     Future.delayed(
-              //       const Duration(seconds: 3),
-              //       () {
-              //         controller.processImage(inputImage);
-              //       },
-              //     );
-              //   },
-              //   onScreenModeChanged: controller.onScreenModeChanged,
-              //   initialDirection: CameraLensDirection.back,
-              //   customPaint: null,
-              // ),
             ),
             controller.isScanning.value
                 ? Container(
@@ -69,30 +52,59 @@ class ScanView extends GetView<ScanController> {
                       borderRadius: BorderRadius.circular(16),
                       color: Colors.white,
                     ),
-                    padding: const EdgeInsets.all(16),
                     margin: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                    padding: const EdgeInsets.fromLTRB(12, 10, 12, 10),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          child: Text(
-                            controller.textFood.value,
-                            style: const TextStyle(
-                              color: Color(0xff030319),
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
+                        Row(
+                          children: [
+                            SizedBox(
+                              child: Text(
+                                controller.textFood.value,
+                                style: const TextStyle(
+                                  color: Color(0xff030319),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
                             ),
-                          ),
+                            if (controller.textFood.value == "Scanning")
+                              Container(
+                                height: 28,
+                                width: 28,
+                                padding: const EdgeInsets.all(8),
+                                child: const CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                          ],
                         ),
                         const SizedBox(width: 12),
-                        controller.textFood.value == "Scanning..."
-                            ? Container(
-                                height: 40,
-                                width: 40,
-                                padding: const EdgeInsets.all(8),
-                                child: const CircularProgressIndicator(),
+                        controller.textFood.value == "Scanning"
+                            ? GestureDetector(
+                                onTap: () => controller.cancelScan(),
+                                child: Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: AppColors.errorColor,
+                                  ),
+                                  padding: const EdgeInsets.all(8),
+                                  child: Container(
+                                    width: 24,
+                                    height: 24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: const Icon(
+                                      Icons.close,
+                                    ),
+                                  ),
+                                ),
                               )
                             : GestureDetector(
                                 onTap: () => controller.showResult(),
@@ -104,24 +116,15 @@ class ScanView extends GetView<ScanController> {
                                     color: AppColors.colorPrimary,
                                   ),
                                   padding: const EdgeInsets.all(8),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: 24,
-                                        height: 24,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        child: const Icon(
-                                          IconlyLight.arrow_right_2,
-                                        ),
-                                      ),
-                                    ],
+                                  child: Container(
+                                    width: 24,
+                                    height: 24,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: const Icon(
+                                      IconlyLight.arrow_right_2,
+                                    ),
                                   ),
                                 ),
                               )
@@ -130,18 +133,15 @@ class ScanView extends GetView<ScanController> {
                   )
                 : Container(
                     width: Get.width,
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: AppValues.largeMargin,
-                      vertical: 48,
-                    ),
+                    margin: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                     child: ElevatedButton(
                       onPressed: () => controller.takePicture(),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.colorPrimary,
                         elevation: 0,
-                        padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        padding: const EdgeInsets.fromLTRB(16, 20, 16, 18),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                       child: const Text(

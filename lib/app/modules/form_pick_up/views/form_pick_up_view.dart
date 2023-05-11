@@ -239,7 +239,7 @@ class FormPickUpView extends GetView<FormPickUpController> {
                 ? () => controller.nextForm()
                 : null,
             style: ElevatedButton.styleFrom(
-              primary: AppColors.colorPrimary,
+              backgroundColor: AppColors.colorPrimary,
               elevation: 0,
               padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
               shape: RoundedRectangleBorder(

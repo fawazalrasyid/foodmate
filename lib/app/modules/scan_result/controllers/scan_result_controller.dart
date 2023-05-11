@@ -16,6 +16,9 @@ class ScanResultController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   User? user;
 
+  final userDailyJournal = <String, dynamic>{}.obs;
+
+  TextEditingController foodPortionCtrl = TextEditingController();
   TextEditingController foodWeightCtrl = TextEditingController();
 
   final calorie = 0.obs;
@@ -25,7 +28,10 @@ class ScanResultController extends GetxController {
 
   @override
   void onInit() {
+    user = auth.currentUser;
     getData();
+    userDailyJournal['calorie'] = 0;
+    getUserDailyjournal();
     super.onInit();
   }
 
@@ -47,24 +53,42 @@ class ScanResultController extends GetxController {
 
     var fd = foodData.data!;
 
-    // init food weight
+    // init food data
+    foodPortionCtrl.text = "1";
     foodWeightCtrl.text = (fd.servingSize!.toInt()).toString();
 
     calculateNutritions();
+  }
+
+  void getUserDailyjournal() async {
+    DateTime now = DateTime.now();
+    String date = DateFormat('ddMMyyyy').format(now);
+
+    final usersRef = FirebaseFirestore.instance.collection('users');
+    final currentUser = await usersRef
+        .doc(user!.uid)
+        .collection("dailyjournal")
+        .doc(date)
+        .get();
+    userDailyJournal.value = currentUser.data() as Map<String, dynamic>;
   }
 
   void calculateNutritions() {
     var fd = foodData.data!;
 
     var servingSize = fd.servingSize!;
+    var portion =
+        int.parse(foodPortionCtrl.text.isNotEmpty ? foodPortionCtrl.text : '0');
     var weight =
         int.parse(foodWeightCtrl.text.isNotEmpty ? foodWeightCtrl.text : '0');
 
-    calorie.value = ((fd.calories!.value! / servingSize) * weight).toInt();
-    protein.value = ((fd.protein!.value! / servingSize) * weight).toInt();
+    calorie.value =
+        ((fd.calories!.value! / servingSize) * weight * portion).toInt();
+    protein.value =
+        ((fd.protein!.value! / servingSize) * weight * portion).toInt();
     carbohydrates.value =
-        ((fd.carbohydrates!.value! / servingSize) * weight).toInt();
-    fat.value = ((fd.fat!.value! / servingSize) * weight).toInt();
+        ((fd.carbohydrates!.value! / servingSize) * weight * portion).toInt();
+    fat.value = ((fd.fat!.value! / servingSize) * weight * portion).toInt();
   }
 
   Future saveToJurnal() async {
@@ -74,28 +98,19 @@ class ScanResultController extends GetxController {
 
     final usersRef = FirebaseFirestore.instance.collection('users');
 
-    DocumentSnapshot<Map<String, dynamic>> documentSnapshot = await usersRef
+    usersRef
         .doc(user?.uid)
         .collection("dailyjournal")
         .doc(date)
-        .get();
-
-    if (documentSnapshot.exists) {
-      usersRef.doc(user?.uid).collection("dailyjournal").doc(date).update({
-        'calorie': documentSnapshot['calorie'] + calorie.toInt(),
-        'protein': documentSnapshot['protein'] + protein.toInt(),
-        'carbohydrates':
-            documentSnapshot['carbohydrates'] + carbohydrates.toInt(),
-        'fat': documentSnapshot['fat'] + fat.toInt(),
-      });
-    } else {
-      usersRef.doc(user?.uid).collection("dailyjournal").doc(date).set({
-        'calorie': calorie.toInt(),
-        'protein': protein.toInt(),
-        'carbohydrates': carbohydrates.toInt(),
-        'fat': fat.toInt(),
-      });
-    }
+        .collection("data")
+        .add({
+      'foodName': foodData.data!.foodName!,
+      'createdAt': DateTime.now().toIso8601String(),
+      'calorie': calorie.toInt(),
+      'protein': protein.toInt(),
+      'carbohydrates': carbohydrates.toInt(),
+      'fat': fat.toInt(),
+    });
 
     var weight =
         int.parse(foodWeightCtrl.text.isNotEmpty ? foodWeightCtrl.text : '0');
