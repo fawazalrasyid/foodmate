@@ -9,6 +9,8 @@
 .history
 .svn/
 migrate_working_dir/
+/lib/app/core/configs/constants.dart
+/android/app/src/main/AndroidManifest.xml
 
 # IntelliJ related
 *.iml
