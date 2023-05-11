@@ -98,6 +98,31 @@ class ScanResultController extends GetxController {
 
     final usersRef = FirebaseFirestore.instance.collection('users');
 
+    DocumentSnapshot<Map<String, dynamic>> documentSnapshot = await usersRef
+        .doc(user?.uid)
+        .collection("dailyjournal")
+        .doc(date)
+        .get();
+
+    // add total data journal
+    if (documentSnapshot.exists) {
+      usersRef.doc(user?.uid).collection("dailyjournal").doc(date).update({
+        'calorie': documentSnapshot['calorie'] + calorie.toInt(),
+        'protein': documentSnapshot['protein'] + protein.toInt(),
+        'carbohydrates':
+            documentSnapshot['carbohydrates'] + carbohydrates.toInt(),
+        'fat': documentSnapshot['fat'] + fat.toInt(),
+      });
+    } else {
+      usersRef.doc(user?.uid).collection("dailyjournal").doc(date).set({
+        'calorie': calorie.toInt(),
+        'protein': protein.toInt(),
+        'carbohydrates': carbohydrates.toInt(),
+        'fat': fat.toInt(),
+      });
+    }
+
+    // add data to journal list
     usersRef
         .doc(user?.uid)
         .collection("dailyjournal")

@@ -89,12 +89,22 @@ class HomeController extends GetxController {
     String date = DateFormat('ddMMyyyy').format(now);
 
     final usersRef = FirebaseFirestore.instance.collection('users');
-    final currentUser = await usersRef
+    final journalData = await usersRef
         .doc(user!.uid)
         .collection("dailyjournal")
         .doc(date)
         .get();
-    userDailyJournal.value = currentUser.data() as Map<String, dynamic>;
+    userDailyJournal.value = journalData.data() as Map<String, dynamic>;
+
+    // final journalData = await usersRef
+    //     .doc(user!.uid)
+    //     .collection("dailyjournal")
+    //     .doc(date)
+    //     .collection("data")
+    //     .get();
+
+    // final userDailyJournalList =
+    //     journalData.docs.map((doc) => doc.data()).toList();
   }
 
   List<DoughnutSeries<ChartData, String>> getSemiDoughnutSeries() {
