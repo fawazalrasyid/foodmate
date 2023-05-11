@@ -95,16 +95,6 @@ class HomeController extends GetxController {
         .doc(date)
         .get();
     userDailyJournal.value = journalData.data() as Map<String, dynamic>;
-
-    // final journalData = await usersRef
-    //     .doc(user!.uid)
-    //     .collection("dailyjournal")
-    //     .doc(date)
-    //     .collection("data")
-    //     .get();
-
-    // final userDailyJournalList =
-    //     journalData.docs.map((doc) => doc.data()).toList();
   }
 
   List<DoughnutSeries<ChartData, String>> getSemiDoughnutSeries() {

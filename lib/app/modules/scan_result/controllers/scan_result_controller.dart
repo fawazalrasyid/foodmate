@@ -119,8 +119,13 @@ class ScanResultController extends GetxController {
         'protein': protein.toInt(),
         'carbohydrates': carbohydrates.toInt(),
         'fat': fat.toInt(),
+        'date': DateFormat('ddMMyyyy').format(now),
+        'createdAt': now.toIso8601String(),
       });
     }
+
+    var weight =
+        int.parse(foodWeightCtrl.text.isNotEmpty ? foodWeightCtrl.text : '0');
 
     // add data to journal list
     usersRef
@@ -130,15 +135,13 @@ class ScanResultController extends GetxController {
         .collection("data")
         .add({
       'foodName': foodData.data!.foodName!,
-      'createdAt': DateTime.now().toIso8601String(),
+      'createdAt': now.toIso8601String(),
+      'weight': weight,
       'calorie': calorie.toInt(),
       'protein': protein.toInt(),
       'carbohydrates': carbohydrates.toInt(),
       'fat': fat.toInt(),
     });
-
-    var weight =
-        int.parse(foodWeightCtrl.text.isNotEmpty ? foodWeightCtrl.text : '0');
 
     Get.offNamed(Routes.ADD_TO_JOURNAL, arguments: [
       {"image": objectImage},
