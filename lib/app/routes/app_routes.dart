@@ -25,6 +25,9 @@ abstract class Routes {
   static const FOOD = _Paths.FOOD;
   static const RESTO = _Paths.RESTO;
   static const JOURNAL_HISTORY = _Paths.JOURNAL_HISTORY;
+  static const RECEIPE_SCAN = _Paths.RECEIPE_SCAN;
+  static const RECEIPE_SCAN_RESULT = _Paths.RECEIPE_SCAN_RESULT;
+  static const DETAIL_RECEIPE = _Paths.DETAIL_RECEIPE;
 }
 
 abstract class _Paths {
@@ -49,4 +52,7 @@ abstract class _Paths {
   static const FOOD = '/food';
   static const RESTO = '/resto';
   static const JOURNAL_HISTORY = '/journal-history';
+  static const RECEIPE_SCAN = '/receipe-scan';
+  static const RECEIPE_SCAN_RESULT = '/receipe-scan-result';
+  static const DETAIL_RECEIPE = '/detail-receipe';
 }

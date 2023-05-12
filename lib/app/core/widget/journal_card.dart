@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -56,6 +57,8 @@ class JournalCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   children: [
+                    SvgPicture.asset("assets/images/ic_fire.svg"),
+                    const SizedBox(width: 4),
                     Text(
                       "${data["calorie"]} kalori",
                       style: const TextStyle(

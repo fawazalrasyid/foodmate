@@ -21,7 +21,7 @@ class MainController extends GetxController {
       HomeView(),
       const ProgramView(),
       ScanView(),
-      const FoodView(),
+      FoodView(),
       ProfileView()
     ];
   }

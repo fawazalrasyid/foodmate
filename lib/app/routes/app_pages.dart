@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/add_to_journal/bindings/add_to_journal_binding.dart';
 import '../modules/add_to_journal/views/add_to_journal_view.dart';
+import '../modules/detail_receipe/bindings/detail_receipe_binding.dart';
+import '../modules/detail_receipe/views/detail_receipe_view.dart';
 import '../modules/food/bindings/food_binding.dart';
 import '../modules/food/views/food_view.dart';
 import '../modules/form_pick_up/bindings/form_pick_up_binding.dart';
@@ -20,6 +22,10 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/program/bindings/program_binding.dart';
 import '../modules/program/views/program_view.dart';
+import '../modules/receipe_scan/bindings/receipe_scan_binding.dart';
+import '../modules/receipe_scan/views/receipe_scan_view.dart';
+import '../modules/receipe_scan_result/bindings/receipe_scan_result_binding.dart';
+import '../modules/receipe_scan_result/views/receipe_scan_result_view.dart';
 import '../modules/resto/bindings/resto_binding.dart';
 import '../modules/resto/views/resto_view.dart';
 import '../modules/scan/bindings/scan_binding.dart';
@@ -110,7 +116,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.FOOD,
-      page: () => const FoodView(),
+      page: () => FoodView(),
       binding: FoodBinding(),
     ),
     GetPage(
@@ -122,6 +128,21 @@ class AppPages {
       name: _Paths.JOURNAL_HISTORY,
       page: () => const JournalHistoryView(),
       binding: JournalHistoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECEIPE_SCAN,
+      page: () => ReceipeScanView(),
+      binding: ReceipeScanBinding(),
+    ),
+    GetPage(
+      name: _Paths.RECEIPE_SCAN_RESULT,
+      page: () => const ReceipeScanResultView(),
+      binding: ReceipeScanResultBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_RECEIPE,
+      page: () => const DetailReceipeView(),
+      binding: DetailReceipeBinding(),
     ),
   ];
 }
