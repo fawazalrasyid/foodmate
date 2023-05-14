@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:foodmate/app/core/values/app_colors.dart';
+import 'package:foodmate/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
@@ -69,7 +70,6 @@ class ProfileView extends GetView<ProfileController> {
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 24,
-                                fontFamily: "DM Sans",
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -86,86 +86,89 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    Container(
-                      padding: const EdgeInsets.all(AppValues.padding),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          color: const Color(0xffede4fd),
-                          width: 1,
+                    GestureDetector(
+                      onTap: () => Get.toNamed(Routes.QUESTS),
+                      child: Container(
+                        padding: const EdgeInsets.all(AppValues.padding),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: const Color(0xffede4fd),
+                            width: 1,
+                          ),
+                          color: const Color(0x7fffffff),
                         ),
-                        color: const Color(0x7fffffff),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/images/ic_badges.svg",
-                                      width: 20,
-                                    ),
-                                    const SizedBox(width: 8),
-                                    const Text(
-                                      "Badges",
-                                      style: TextStyle(
-                                        color: Color(0xff21383e),
-                                        fontSize: 14,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/images/ic_badges.svg",
+                                        width: 20,
                                       ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(height: 8),
-                                const Text(
-                                  "28",
-                                  style: TextStyle(
-                                    color: Color(0xff2e2f38),
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w700,
+                                      const SizedBox(width: 8),
+                                      const Text(
+                                        "Badges",
+                                        style: TextStyle(
+                                          color: Color(0xff21383e),
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SvgPicture.asset(
-                                      "assets/images/ic_poin.svg",
-                                      width: 20,
+                                  const SizedBox(height: 8),
+                                  const Text(
+                                    "28",
+                                    style: TextStyle(
+                                      color: Color(0xff2e2f38),
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w700,
                                     ),
-                                    const SizedBox(width: 8),
-                                    const Text(
-                                      "Poin",
-                                      style: TextStyle(
-                                        color: Color(0xff21383e),
-                                        fontSize: 14,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(height: 8),
-                                const Text(
-                                  "1800",
-                                  style: TextStyle(
-                                    color: Color(0xff2e2f38),
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      SvgPicture.asset(
+                                        "assets/images/ic_poin.svg",
+                                        width: 20,
+                                      ),
+                                      const SizedBox(width: 8),
+                                      const Text(
+                                        "Poin",
+                                        style: TextStyle(
+                                          color: Color(0xff21383e),
+                                          fontSize: 14,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8),
+                                  const Text(
+                                    "1800",
+                                    style: TextStyle(
+                                      color: Color(0xff2e2f38),
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16),

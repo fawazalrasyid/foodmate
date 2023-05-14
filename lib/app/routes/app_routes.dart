@@ -28,6 +28,8 @@ abstract class Routes {
   static const RECEIPE_SCAN = _Paths.RECEIPE_SCAN;
   static const RECEIPE_SCAN_RESULT = _Paths.RECEIPE_SCAN_RESULT;
   static const DETAIL_RECEIPE = _Paths.DETAIL_RECEIPE;
+  static const QUESTS = _Paths.QUESTS;
+  static const SELECT_PROGRAM = _Paths.SELECT_PROGRAM;
 }
 
 abstract class _Paths {
@@ -55,4 +57,6 @@ abstract class _Paths {
   static const RECEIPE_SCAN = '/receipe-scan';
   static const RECEIPE_SCAN_RESULT = '/receipe-scan-result';
   static const DETAIL_RECEIPE = '/detail-receipe';
+  static const QUESTS = '/quests';
+  static const SELECT_PROGRAM = '/select-program';
 }

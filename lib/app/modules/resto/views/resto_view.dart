@@ -59,10 +59,17 @@ class RestoView extends GetView<RestoController> {
                   },
                 ),
               )
-            : const SizedBox(
-                height: 210,
-                child: Center(
-                  child: CircularProgressIndicator(),
+            : SizedBox(
+                height: Get.height - Get.statusBarHeight,
+                child: const Center(
+                  child: Text(
+                    "Belum ada rekomendasi resto di sekitar anda",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Color(0xff030319),
+                      fontSize: 14,
+                    ),
+                  ),
                 ),
               ),
       ),

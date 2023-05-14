@@ -50,6 +50,7 @@ class SigninController extends GetxController {
           Get.offAllNamed(Routes.ONBOARDING);
         }
       } else if (user != null) {
+        await user.sendEmailVerification();
         Fluttertoast.showToast(msg: 'Please verify your email');
       }
     } on FirebaseAuthException catch (e) {

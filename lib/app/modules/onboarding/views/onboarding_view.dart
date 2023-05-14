@@ -63,7 +63,7 @@ class OnboardingView extends GetView<OnboardingController> {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    "Tetap termotivasi dengan personalisasi rekomendasi nutrisi makanan, dan buat sisa makananmu jadi lebih bermakna.",
+                    "Tetap termotivasi dengan personalisasi rekomendasi nutrisi makanan buat perjalanan hidup sehat mudah dengan kami.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Color(0xff82838a),
@@ -160,48 +160,50 @@ class OnboardingView extends GetView<OnboardingController> {
 
   SafeArea form1() {
     return SafeArea(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: AppValues.margin),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(2.50),
-                      color: const Color(0xfffe860a),
-                    ),
-                  ),
-                ),
-                // const SizedBox(width: 4),
-                // Expanded(
-                //   child: Container(
-                //     height: 5,
-                //     decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(2.50),
-                //       color: const Color(0xffe7eaf2),
-                //     ),
-                //   ),
-                // ),
-                // const SizedBox(width: 16),
-                // const Text(
-                //   "Lewati",
-                //   textAlign: TextAlign.center,
-                //   style: TextStyle(
-                //     color: Color(0xff1ec0ce),
-                //     fontSize: 14,
-                //     fontWeight: FontWeight.w700,
-                //   ),
-                // )
-              ],
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          // const SizedBox(height: 24),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              // Expanded(
+              //   child: Container(
+              //     height: 5,
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(2.50),
+              //       color: const Color(0xfffe860a),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(width: 4),
+              // Expanded(
+              //   child: Container(
+              //     height: 5,
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(2.50),
+              //       color: const Color(0xffe7eaf2),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(width: 16),
+              // const Text(
+              //   "Lewati",
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(
+              //     color: Color(0xff1ec0ce),
+              //     fontSize: 14,
+              //     fontWeight: FontWeight.w700,
+              //   ),
+              // )
+            ],
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: AppValues.margin),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -518,8 +520,9 @@ class OnboardingView extends GetView<OnboardingController> {
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: 24),
+        ],
       ),
     );
   }
@@ -530,6 +533,7 @@ class OnboardingView extends GetView<OnboardingController> {
         margin: const EdgeInsets.symmetric(horizontal: AppValues.margin),
         child: Column(
           children: [
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -630,6 +634,7 @@ class OnboardingView extends GetView<OnboardingController> {
                 ),
               ),
             ),
+            const SizedBox(height: 24),
           ],
         ),
       ),

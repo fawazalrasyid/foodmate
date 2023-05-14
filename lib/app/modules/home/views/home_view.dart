@@ -62,7 +62,6 @@ class HomeView extends GetView<HomeController> {
                                   style: const TextStyle(
                                     color: AppColors.white,
                                     fontSize: 16,
-                                    fontFamily: "DM Sans",
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -331,7 +330,6 @@ class HomeView extends GetView<HomeController> {
                       style: TextStyle(
                         color: Color(0xff030319),
                         fontSize: 18,
-                        fontFamily: "DM Sans",
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -345,7 +343,6 @@ class HomeView extends GetView<HomeController> {
                         style: TextStyle(
                           color: AppColors.textPrimaryColor,
                           fontSize: 12,
-                          fontFamily: "DM Sans",
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -354,36 +351,54 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               const SizedBox(height: 16),
-              controller.resto != Rxn<List<Result>>()
-                  ? SizedBox(
-                      height: 210,
-                      child: ListView.builder(
-                        itemCount: controller.resto.value!.length <= 5
-                            ? controller.resto.value!.length
-                            : 5,
-                        scrollDirection: Axis.horizontal,
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return MediumCard(
-                            index: index,
-                            isLast: index == 4,
-                            name: controller.resto.value![index].name!,
-                            image: controller
-                                    .resto.value![index].photos!.isNotEmpty
-                                ? getPhotoFromGmap(controller.resto
-                                    .value![index].photos!.first.photoReference)
-                                : "https://lh5.googleusercontent.com/p/AF1QipP9fSLK3eLQHrX8hFeQd3JdZek1O9Woz0FAQbXo=w408-h306-k-no",
-                          );
-                        },
-                      ),
-                    )
-                  : const SizedBox(
+              controller.isLoading.value
+                  ? const SizedBox(
                       height: 210,
                       child: Center(
                         child: CircularProgressIndicator(),
                       ),
-                    ),
+                    )
+                  : controller.resto != Rxn<List<Result>>()
+                      ? SizedBox(
+                          height: 210,
+                          child: ListView.builder(
+                            itemCount: controller.resto.value!.length <= 5
+                                ? controller.resto.value!.length
+                                : 5,
+                            scrollDirection: Axis.horizontal,
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return MediumCard(
+                                index: index,
+                                isLast: index == 4,
+                                name: controller.resto.value![index].name!,
+                                image: controller
+                                        .resto.value![index].photos!.isNotEmpty
+                                    ? getPhotoFromGmap(controller
+                                        .resto
+                                        .value![index]
+                                        .photos!
+                                        .first
+                                        .photoReference)
+                                    : "https://lh5.googleusercontent.com/p/AF1QipP9fSLK3eLQHrX8hFeQd3JdZek1O9Woz0FAQbXo=w408-h306-k-no",
+                              );
+                            },
+                          ),
+                        )
+                      : const SizedBox(
+                          height: 210,
+                          child: Center(
+                            child: Text(
+                              "Belum ada rekomendasi resto di sekitar anda",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Color(0xff030319),
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
               const SizedBox(height: 16),
             ],
           ),

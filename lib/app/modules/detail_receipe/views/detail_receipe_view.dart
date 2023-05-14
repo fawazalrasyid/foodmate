@@ -304,7 +304,6 @@ class DetailReceipeView extends GetView<DetailReceipeController> {
                                                     style: TextStyle(
                                                       color: Color(0xff030319),
                                                       fontSize: 18,
-                                                      fontFamily: "DM Sans",
                                                       fontWeight:
                                                           FontWeight.w700,
                                                     ),
@@ -315,7 +314,6 @@ class DetailReceipeView extends GetView<DetailReceipeController> {
                                                     style: TextStyle(
                                                       color: Color(0xff4db236),
                                                       fontSize: 14,
-                                                      fontFamily: "DM Sans",
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),
@@ -462,7 +460,6 @@ class DetailReceipeView extends GetView<DetailReceipeController> {
                                                     style: TextStyle(
                                                       color: Color(0xff030319),
                                                       fontSize: 18,
-                                                      fontFamily: "DM Sans",
                                                       fontWeight:
                                                           FontWeight.w700,
                                                     ),
@@ -473,7 +470,6 @@ class DetailReceipeView extends GetView<DetailReceipeController> {
                                                     style: TextStyle(
                                                       color: Color(0xff4db236),
                                                       fontSize: 14,
-                                                      fontFamily: "DM Sans",
                                                       fontWeight:
                                                           FontWeight.w500,
                                                     ),

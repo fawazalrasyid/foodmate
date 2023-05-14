@@ -6,6 +6,7 @@ import 'package:foodmate/app/data/service/home_service.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' hide Position;
 
 import '../../../data/model/chart_model.dart';
@@ -15,6 +16,8 @@ class HomeController extends GetxController {
   late final HomeService _homeService;
   FirebaseAuth auth = FirebaseAuth.instance;
   User? user;
+
+  final isLoading = false.obs;
 
   final userDailyJournal = <String, dynamic>{}.obs;
   final dailyCalorieIntake = 0.0.obs;
@@ -29,7 +32,7 @@ class HomeController extends GetxController {
   void onInit() {
     _homeService = Get.put(HomeService());
     user = auth.currentUser;
-    handleLocationPermission();
+    // permissionHandler();
     getCalorieIntake();
     getUserDailyjournal();
     getRestoRecommendation();
@@ -106,14 +109,14 @@ class HomeController extends GetxController {
             userDailyJournal['calorie'] != null
                 ? userDailyJournal['calorie'].toDouble()
                 : 0.0,
-            const Color(0xff4DB236),
+            const Color(0xff6BBF58),
           ),
           ChartData(
             'Remaining',
             (dailyCalorieIntake.value -
                 (userDailyJournal['calorie'] != null
                     ? userDailyJournal['calorie'].toDouble()
-                    : 0.0)),
+                    : 1.0)),
             const Color(0xffFF9364),
           ),
         ],
@@ -129,13 +132,15 @@ class HomeController extends GetxController {
   }
 
   Future<bool> handleLocationPermission() async {
+    print("hehe => start hand");
     bool serviceEnabled;
     LocationPermission permission;
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
       Fluttertoast.showToast(
-          msg: 'Location services are disabled. Please enable the services');
+        msg: 'Location services are disabled. Please enable the services',
+      );
       return false;
     }
 
@@ -143,38 +148,55 @@ class HomeController extends GetxController {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: 'Location permissions are denied');
         return false;
       }
-    }
-    if (permission == LocationPermission.deniedForever) {
-      permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.deniedForever) {
+        Fluttertoast.showToast(
+          msg: 'Location permissions are permanently denied',
+        );
+
         return false;
       }
     }
+    print("hehe => done hand");
     return true;
   }
 
   Future<void> getCurrentPosition() async {
     final hasPermission = await handleLocationPermission();
-    if (!hasPermission) return;
-    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
-        .then((Position position) {
-      currentPosition.value = "${position.latitude},${position.longitude}";
-      // getRestoRecommendation();
-    }).catchError((e) {
-      debugPrint(e);
-    });
+    print("hehe => $hasPermission");
+    if (hasPermission) {
+      print("hehe => start");
+      await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      ).then((Position position) {
+        print("hehe => ${position.latitude},${position.longitude}");
+        currentPosition.value = "${position.latitude},${position.longitude}";
+      }).catchError((e) {
+        debugPrint(e);
+      });
+      print("hehe => done");
+    }
   }
 
   getRestoRecommendation() async {
+    isLoading.value = true;
     await getCurrentPosition();
+    print("hehe => $currentPosition");
+    if (currentPosition.value.isNotEmpty) {
+      print("hehe => start");
+      var response =
+          await _homeService.getRecommendationResto(currentPosition.value);
 
-    var response =
-        await _homeService.getRecommendationResto(currentPosition.value);
-
-    if (response != null) {
-      resto.value = response.results;
+      if (response != null) resto.value = response.results;
+      print("hehe => stop");
     }
+
+    isLoading.value = false;
   }
+
+  // permissionHandler() async {
+  //   await [Permission.location, Permission.camera].request();
+  // }
 }

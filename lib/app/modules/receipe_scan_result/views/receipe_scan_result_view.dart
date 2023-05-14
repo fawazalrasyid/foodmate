@@ -82,7 +82,6 @@ class ReceipeScanResultView extends GetView<ReceipeScanResultController> {
                                 style: TextStyle(
                                   color: AppColors.textPrimaryColor,
                                   fontSize: 18,
-                                  fontFamily: "DM Sans",
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
@@ -91,7 +90,6 @@ class ReceipeScanResultView extends GetView<ReceipeScanResultController> {
                                 style: TextStyle(
                                   color: Color(0xff25293c),
                                   fontSize: 18,
-                                  fontFamily: "DM Sans",
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),

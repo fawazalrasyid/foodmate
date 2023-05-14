@@ -57,7 +57,7 @@ class ScanController extends GetxController {
         if (e is CameraException) {
           switch (e.code) {
             case 'CameraAccessDenied':
-              Fluttertoast.showToast(msg: "Akses kamera ditolak");
+              Fluttertoast.showToast(msg: "Camera permissions are denied");
               break;
             default:
               Fluttertoast.showToast(msg: "Terjadi masalah, coba lagi");

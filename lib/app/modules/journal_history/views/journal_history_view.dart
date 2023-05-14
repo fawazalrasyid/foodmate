@@ -164,60 +164,71 @@ class JournalHistoryView extends GetView<JournalHistoryController> {
                   ),
                   const SizedBox(height: 8),
                   Expanded(
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: controller.dailyJournalList != []
-                          ? Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: AppValues.padding),
-                              child: GroupedListView<dynamic, String>(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                elements: controller.dailyJournalList,
-                                groupBy: (element) => DateFormat('dd MMMM yyyy')
-                                    .format(
-                                        DateTime.parse(element['createdAt'])),
-                                groupComparator: (value1, value2) =>
-                                    value2.compareTo(value1),
-                                groupSeparatorBuilder: (String value) =>
-                                    Container(
+                    child: controller.isLoading.value
+                        ? const Center(child: CircularProgressIndicator())
+                        : controller.dailyJournalList.isNotEmpty
+                            ? SingleChildScrollView(
+                                physics: const BouncingScrollPhysics(),
+                                child: Container(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: AppValues.padding),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        value,
-                                        style: const TextStyle(
-                                          color: Color(0xff030319),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                      horizontal: AppValues.padding),
+                                  child: GroupedListView<dynamic, String>(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    elements: controller.dailyJournalList,
+                                    groupBy: (element) =>
+                                        DateFormat('dd MMMM yyyy').format(
+                                            DateTime.parse(
+                                                element['createdAt'])),
+                                    groupComparator: (value1, value2) =>
+                                        value2.compareTo(value1),
+                                    groupSeparatorBuilder: (String value) =>
+                                        Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: AppValues.padding),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            value,
+                                            style: const TextStyle(
+                                              color: Color(0xff030319),
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          Text(
+                                            "${controller.getTotalCalorie(value)} kalori",
+                                            style: const TextStyle(
+                                              color: Color(0xfffe860a),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                      Text(
-                                        "${controller.getTotalCalorie(value)} kalori",
-                                        style: const TextStyle(
-                                          color: Color(0xfffe860a),
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      )
-                                    ],
+                                    ),
+                                    itemBuilder: (context, element) {
+                                      return JournalCard(
+                                        data: element,
+                                      );
+                                    },
                                   ),
                                 ),
-                                itemBuilder: (context, element) {
-                                  return JournalCard(
-                                    data: element,
-                                  );
-                                },
+                              )
+                            : const Center(
+                                child: Text(
+                                  "Belum ada riwayat",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Color(0xff030319),
+                                    fontSize: 14,
+                                  ),
+                                ),
                               ),
-                            )
-                          : const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                    ),
-                  ),
+                  )
                 ],
               ),
             ),

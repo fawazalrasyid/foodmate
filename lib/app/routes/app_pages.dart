@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/Quests/bindings/quests_binding.dart';
+import '../modules/Quests/views/quests_view.dart';
 import '../modules/add_to_journal/bindings/add_to_journal_binding.dart';
 import '../modules/add_to_journal/views/add_to_journal_view.dart';
 import '../modules/detail_receipe/bindings/detail_receipe_binding.dart';
@@ -32,6 +34,8 @@ import '../modules/scan/bindings/scan_binding.dart';
 import '../modules/scan/views/scan_view.dart';
 import '../modules/scan_result/bindings/scan_result_binding.dart';
 import '../modules/scan_result/views/scan_result_view.dart';
+import '../modules/select_program/bindings/select_program_binding.dart';
+import '../modules/select_program/views/select_program_view.dart';
 import '../modules/signin/bindings/signin_binding.dart';
 import '../modules/signin/views/signin_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -111,7 +115,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROGRAM,
-      page: () => const ProgramView(),
+      page: () => ProgramView(),
       binding: ProgramBinding(),
     ),
     GetPage(
@@ -143,6 +147,16 @@ class AppPages {
       name: _Paths.DETAIL_RECEIPE,
       page: () => const DetailReceipeView(),
       binding: DetailReceipeBinding(),
+    ),
+    GetPage(
+      name: _Paths.QUESTS,
+      page: () => const QuestsView(),
+      binding: QuestsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SELECT_PROGRAM,
+      page: () => const SelectProgramView(),
+      binding: SelectProgramBinding(),
     ),
   ];
 }

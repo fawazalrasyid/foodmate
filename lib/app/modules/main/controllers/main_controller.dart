@@ -17,13 +17,7 @@ class MainController extends GetxController {
   var tabIndex = 0.obs;
 
   List<Widget> pageItems() {
-    return [
-      HomeView(),
-      const ProgramView(),
-      ScanView(),
-      FoodView(),
-      ProfileView()
-    ];
+    return [HomeView(), ProgramView(), ScanView(), FoodView(), ProfileView()];
   }
 
   List<PersistentBottomNavBarItem> navBarsItems() {

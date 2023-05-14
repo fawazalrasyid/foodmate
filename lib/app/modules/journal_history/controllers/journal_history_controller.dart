@@ -8,6 +8,8 @@ class JournalHistoryController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   User? user;
 
+  final isLoading = false.obs;
+
   final journalList = [].obs;
   final dailyJournalList = [].obs;
 
@@ -29,6 +31,8 @@ class JournalHistoryController extends GetxController {
   }
 
   void getUserDailyjournal() async {
+    isLoading.value = true;
+
     final usersRef = FirebaseFirestore.instance.collection('users');
 
     final journalData =
@@ -49,6 +53,8 @@ class JournalHistoryController extends GetxController {
     }
 
     dailyJournalList.addAll(dailyJournal);
+
+    isLoading.value = false;
   }
 
   getTotalCalorie(String date) {

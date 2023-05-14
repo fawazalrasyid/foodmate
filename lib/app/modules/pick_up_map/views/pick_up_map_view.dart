@@ -79,7 +79,6 @@ class PickUpMapView extends GetView<PickUpMapController> {
                             style: TextStyle(
                               color: Color(0xff05161b),
                               fontSize: 24,
-                              fontFamily: "DM Sans",
                               fontWeight: FontWeight.w700,
                             ),
                           ),
@@ -176,7 +175,6 @@ class PickUpMapView extends GetView<PickUpMapController> {
                                 style: TextStyle(
                                   color: Color(0xff1ec0ce),
                                   fontSize: 14,
-                                  fontFamily: "DM Sans",
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -189,7 +187,6 @@ class PickUpMapView extends GetView<PickUpMapController> {
                                   style: TextStyle(
                                     color: Color(0xff969899),
                                     fontSize: 14,
-                                    fontFamily: "DM Sans",
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -203,7 +200,6 @@ class PickUpMapView extends GetView<PickUpMapController> {
                                 style: TextStyle(
                                   color: Color(0xff969899),
                                   fontSize: 14,
-                                  fontFamily: "DM Sans",
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
@@ -234,7 +230,6 @@ class PickUpMapView extends GetView<PickUpMapController> {
                                     style: TextStyle(
                                       color: Color(0xff05161b),
                                       fontSize: 16,
-                                      fontFamily: "DM Sans",
                                       fontWeight: FontWeight.w700,
                                     ),
                                   ),
@@ -243,7 +238,6 @@ class PickUpMapView extends GetView<PickUpMapController> {
                                     style: TextStyle(
                                       color: Color(0xff969899),
                                       fontSize: 14,
-                                      fontFamily: "DM Sans",
                                       fontWeight: FontWeight.w500,
                                     ),
                                   )

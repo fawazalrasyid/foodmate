@@ -76,7 +76,6 @@ class ScanResultView extends GetView<ScanResultController> {
                     style: const TextStyle(
                       color: Color(0xff4db236),
                       fontSize: 14,
-                      fontFamily: "DM Sans",
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -476,7 +475,6 @@ class ScanResultView extends GetView<ScanResultController> {
                                                           color:
                                                               Color(0xff030319),
                                                           fontSize: 18,
-                                                          fontFamily: "DM Sans",
                                                           fontWeight:
                                                               FontWeight.w700,
                                                         ),
@@ -488,7 +486,6 @@ class ScanResultView extends GetView<ScanResultController> {
                                                           color:
                                                               Color(0xff4db236),
                                                           fontSize: 14,
-                                                          fontFamily: "DM Sans",
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),

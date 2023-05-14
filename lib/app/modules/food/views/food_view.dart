@@ -24,7 +24,7 @@ class FoodView extends GetView<FoodController> {
           children: [
             Container(
               width: Get.width,
-              height: Get.height * 0.41,
+              // height: Get.height * 0.41,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(0),
@@ -34,134 +34,147 @@ class FoodView extends GetView<FoodController> {
                 ),
                 color: Color(0xff69be55),
               ),
-              child: SafeArea(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 24),
-                    Container(
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: AppValues.margin,
-                      ),
-                      child: TextField(
-                        controller: null,
-                        textInputAction: TextInputAction.search,
-                        decoration: InputDecoration(
-                          filled: true,
-                          suffixIcon: const Icon(IconlyLight.search),
-                          suffixIconColor: const Color(0xff5faa46),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                            borderSide: BorderSide.none,
+              child: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  Image.asset(
+                    "assets/images/program_ornament.png",
+                    width: Get.width,
+                  ),
+                  SafeArea(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 24),
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: AppValues.margin,
                           ),
-                          contentPadding: const EdgeInsets.all(14),
-                          hintText: "Ingin makan apa?",
-                          hintStyle: const TextStyle(
-                            color: Color(0xff8f92a1),
-                            fontSize: 14,
+                          child: TextField(
+                            controller: null,
+                            textInputAction: TextInputAction.search,
+                            decoration: InputDecoration(
+                              filled: true,
+                              suffixIcon: const Icon(IconlyLight.search),
+                              suffixIconColor: const Color(0xff5faa46),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: const EdgeInsets.all(14),
+                              hintText: "Ingin makan apa?",
+                              hintStyle: const TextStyle(
+                                color: Color(0xff8f92a1),
+                                fontSize: 14,
+                              ),
+                              hoverColor: AppColors.focusedTextFieldBorderColor,
+                              fillColor: Colors.white,
+                            ),
                           ),
-                          hoverColor: AppColors.focusedTextFieldBorderColor,
-                          fillColor: Colors.white,
                         ),
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-                    Container(
-                      width: Get.width,
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: AppValues.margin,
-                      ),
-                      padding: const EdgeInsets.all(AppValues.largePadding),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: const Color(0xfff1ffee),
-                      ),
-                      child: Column(
-                        children: [
-                          const Text(
-                            "Manfaatkan Bahan Makananmu!",
-                            style: TextStyle(
-                              color: Color(0xff030319),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
+                        const SizedBox(height: 24),
+                        Container(
+                          width: Get.width,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: AppValues.margin,
                           ),
-                          const SizedBox(height: 8),
-                          const Text(
-                            "Input bahan makanan yang kamu punya,\n kami akan men-generate resep makanan kamu.",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Color(0xff8f92a1),
-                              fontSize: 12,
-                            ),
+                          padding: const EdgeInsets.all(AppValues.largePadding),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: const Color(0xfff1ffee),
                           ),
-                          const SizedBox(height: 16),
-                          Row(
+                          child: Column(
                             children: [
-                              Expanded(
-                                child: SizedBox(
-                                  width: Get.width,
-                                  child: ElevatedButton(
-                                    onPressed: () =>
-                                        Get.toNamed(Routes.RECEIPE_SCAN),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xffFE860A),
-                                      elevation: 0,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          32, 16, 32, 16),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                    ),
-                                    child: const Text(
-                                      "Scan",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: AppColors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
+                              const Text(
+                                "Manfaatkan Bahan Makananmu!",
+                                style: TextStyle(
+                                  color: Color(0xff030319),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                              const SizedBox(width: 24),
-                              Expanded(
-                                child: SizedBox(
-                                  width: Get.width,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xffFFFFFF),
-                                      elevation: 0,
-                                      padding: const EdgeInsets.fromLTRB(
-                                          32, 16, 32, 16),
-                                      side: const BorderSide(
-                                        color: Color(0xffFE860A),
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                    ),
-                                    child: const Text(
-                                      "Input",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Color(0xffFE860A),
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
+                              const SizedBox(height: 8),
+                              const Text(
+                                "Input bahan makanan yang kamu punya,\n kami akan men-generate resep makanan kamu.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xff8f92a1),
+                                  fontSize: 12,
+                                ),
+                              ),
+                              const SizedBox(height: 16),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: SizedBox(
+                                      width: Get.width,
+                                      child: ElevatedButton(
+                                        onPressed: () =>
+                                            Get.toNamed(Routes.RECEIPE_SCAN),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              const Color(0xffFE860A),
+                                          elevation: 0,
+                                          padding: const EdgeInsets.fromLTRB(
+                                              32, 16, 32, 16),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          "Scan",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: AppColors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                  const SizedBox(width: 24),
+                                  Expanded(
+                                    child: SizedBox(
+                                      width: Get.width,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              const Color(0xffFFFFFF),
+                                          elevation: 0,
+                                          padding: const EdgeInsets.fromLTRB(
+                                              32, 16, 32, 16),
+                                          side: const BorderSide(
+                                            color: Color(0xffFE860A),
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          "Input",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Color(0xffFE860A),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 24),
+                      ],
                     ),
-                    const SizedBox(height: 24),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 24),
@@ -175,7 +188,6 @@ class FoodView extends GetView<FoodController> {
                     style: TextStyle(
                       color: Color(0xff25293c),
                       fontSize: 18,
-                      fontFamily: "DM Sans",
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -289,11 +301,10 @@ class FoodView extends GetView<FoodController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Mau yang simple? Pesan Aja!",
+                    "Rekomendasi FoodMate",
                     style: TextStyle(
                       color: Color(0xff25293c),
                       fontSize: 18,
-                      fontFamily: "DM Sans",
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -311,10 +322,18 @@ class FoodView extends GetView<FoodController> {
                       mainAxisSpacing: 16,
                     ),
                     itemBuilder: (context, index) {
-                      return MenuCard(
-                        name: controller.foodList[index]["name"]!,
-                        calorie: controller.foodList[index]["calorie"]!,
-                        image: controller.foodList[index]["img"]!,
+                      return GestureDetector(
+                        onTap: () => Get.toNamed(
+                          Routes.DETAIL_RECEIPE,
+                          arguments: [
+                            {"data": controller.foodList[index]},
+                          ],
+                        ),
+                        child: MenuCard(
+                          name: controller.foodList[index]["name"]!,
+                          calorie: controller.foodList[index]["calorie"]!,
+                          image: controller.foodList[index]["img"]!,
+                        ),
                       );
                     },
                   ),

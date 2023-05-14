@@ -29,6 +29,7 @@ dependencies:
   intl: ^0.17.0
   path: ^1.8.2
   path_provider: ^2.0.13
+  permission_handler: ^10.2.0
   persistent_bottom_nav_bar: ^5.0.2
   syncfusion_flutter_charts: ^20.4.54
   table_calendar: ^3.0.8

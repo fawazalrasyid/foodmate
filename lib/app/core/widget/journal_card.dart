@@ -121,7 +121,6 @@ class JournalCard extends StatelessWidget {
                               style: const TextStyle(
                                 color: Color(0xff575c55),
                                 fontSize: 14,
-                                fontFamily: "DM Sans",
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -170,7 +169,6 @@ class JournalCard extends StatelessWidget {
                               style: const TextStyle(
                                 color: Color(0xff575c55),
                                 fontSize: 14,
-                                fontFamily: "DM Sans",
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
@@ -219,7 +217,6 @@ class JournalCard extends StatelessWidget {
                               style: const TextStyle(
                                 color: Color(0xff575c55),
                                 fontSize: 14,
-                                fontFamily: "DM Sans",
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
