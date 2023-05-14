@@ -396,7 +396,7 @@ class ProfileView extends GetView<ProfileController> {
                               ),
                             ),
                             Text(
-                              controller.userData!["alergies"] ?? "-",
+                              controller.userData!["allergies"] ?? "-",
                               style: const TextStyle(
                                 color: Color(0xff25293c),
                                 fontSize: 16,

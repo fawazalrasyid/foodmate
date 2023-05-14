@@ -29,10 +29,10 @@ class HomeController extends GetxController {
   final Rxn<List<Result>> resto = Rxn<List<Result>>();
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
     _homeService = Get.put(HomeService());
     user = auth.currentUser;
-    // permissionHandler();
+    await permissionHandler();
     getCalorieIntake();
     getUserDailyjournal();
     getRestoRecommendation();
@@ -132,7 +132,6 @@ class HomeController extends GetxController {
   }
 
   Future<bool> handleLocationPermission() async {
-    print("hehe => start hand");
     bool serviceEnabled;
     LocationPermission permission;
 
@@ -159,44 +158,39 @@ class HomeController extends GetxController {
         return false;
       }
     }
-    print("hehe => done hand");
+
     return true;
   }
 
   Future<void> getCurrentPosition() async {
     final hasPermission = await handleLocationPermission();
-    print("hehe => $hasPermission");
+
     if (hasPermission) {
-      print("hehe => start");
       await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high,
       ).then((Position position) {
-        print("hehe => ${position.latitude},${position.longitude}");
         currentPosition.value = "${position.latitude},${position.longitude}";
       }).catchError((e) {
         debugPrint(e);
       });
-      print("hehe => done");
     }
   }
 
   getRestoRecommendation() async {
     isLoading.value = true;
     await getCurrentPosition();
-    print("hehe => $currentPosition");
+
     if (currentPosition.value.isNotEmpty) {
-      print("hehe => start");
       var response =
           await _homeService.getRecommendationResto(currentPosition.value);
 
       if (response != null) resto.value = response.results;
-      print("hehe => stop");
     }
 
     isLoading.value = false;
   }
 
-  // permissionHandler() async {
-  //   await [Permission.location, Permission.camera].request();
-  // }
+  permissionHandler() async {
+    await [Permission.location, Permission.camera].request();
+  }
 }

@@ -72,7 +72,7 @@ class JournalHistoryView extends GetView<JournalHistoryController> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: Color(0xffffede8),
+                          color: const Color(0xffffede8),
                           width: 1,
                         ),
                         color: const Color(0xfffe860a),

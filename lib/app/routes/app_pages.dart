@@ -8,8 +8,6 @@ import '../modules/detail_receipe/bindings/detail_receipe_binding.dart';
 import '../modules/detail_receipe/views/detail_receipe_view.dart';
 import '../modules/food/bindings/food_binding.dart';
 import '../modules/food/views/food_view.dart';
-import '../modules/form_pick_up/bindings/form_pick_up_binding.dart';
-import '../modules/form_pick_up/views/form_pick_up_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/journal_history/bindings/journal_history_binding.dart';
@@ -18,8 +16,6 @@ import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
 import '../modules/onboarding/bindings/onboarding_binding.dart';
 import '../modules/onboarding/views/onboarding_view.dart';
-import '../modules/pick_up_map/bindings/pick_up_map_binding.dart';
-import '../modules/pick_up_map/views/pick_up_map_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/program/bindings/program_binding.dart';
@@ -102,16 +98,6 @@ class AppPages {
       name: _Paths.ADD_TO_JOURNAL,
       page: () => const AddToJournalView(),
       binding: AddToJournalBinding(),
-    ),
-    GetPage(
-      name: _Paths.FORM_PICK_UP,
-      page: () => const FormPickUpView(),
-      binding: FormPickUpBinding(),
-    ),
-    GetPage(
-      name: _Paths.PICK_UP_MAP,
-      page: () => const PickUpMapView(),
-      binding: PickUpMapBinding(),
     ),
     GetPage(
       name: _Paths.PROGRAM,

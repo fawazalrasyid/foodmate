@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/status/http_status.dart';
-import 'package:http/http.dart' as http;
 
 import '../../core/configs/constants.dart';
 import '../model/resto_recommendation_response_model.dart';

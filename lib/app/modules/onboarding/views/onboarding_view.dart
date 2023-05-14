@@ -166,7 +166,7 @@ class OnboardingView extends GetView<OnboardingController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
+            children: const [
               // Expanded(
               //   child: Container(
               //     height: 5,

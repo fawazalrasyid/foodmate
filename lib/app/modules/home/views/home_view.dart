@@ -82,7 +82,7 @@ class HomeView extends GetView<HomeController> {
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(16),
-                                color: Color(0xffEFF8ED),
+                                color: const Color(0xffEFF8ED),
                               ),
                               child: Column(
                                 children: [
@@ -176,7 +176,7 @@ class HomeView extends GetView<HomeController> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             border: Border.all(
-                                              color: Color(0xfff6c8cb),
+                                              color: const Color(0xfff6c8cb),
                                               width: 1,
                                             ),
                                             color: Colors.white,
@@ -218,7 +218,7 @@ class HomeView extends GetView<HomeController> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             border: Border.all(
-                                              color: Color(0xff9e92e9),
+                                              color: const Color(0xff9e92e9),
                                               width: 1,
                                             ),
                                             color: Colors.white,
@@ -260,7 +260,7 @@ class HomeView extends GetView<HomeController> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             border: Border.all(
-                                              color: Color(0xff84baff),
+                                              color: const Color(0xff84baff),
                                               width: 1,
                                             ),
                                             color: Colors.white,
