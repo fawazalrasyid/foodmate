@@ -27,22 +27,20 @@ class ScanView extends GetView<ScanController> {
         //     splashRadius: 28,
         //   ),
         // ),
-        body: controller.cameraCtrl != null
+        body: controller.isInitializeCamera.value
             ? Stack(
                 alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   SizedBox(
-                      height: Get.height,
-                      width: Get.width,
-                      child: AspectRatio(
-                        aspectRatio: controller.cameraCtrl!.value.aspectRatio,
-                        child: controller.objectImage.value == null
-                            ? CameraPreview(controller.cameraCtrl!)
-                            : Image.file(
-                                File(controller.objectImage.value!.path),
-                                fit: BoxFit.cover,
-                              ),
-                      )),
+                    height: Get.height,
+                    width: Get.width,
+                    child: controller.objectImage == Rx<XFile?>(null)
+                        ? CameraPreview(controller.cameraCtrl!)
+                        : Image.file(
+                            File(controller.objectImage.value!.path),
+                            fit: BoxFit.cover,
+                          ),
+                  ),
                   controller.isScanning.value
                       ? Container(
                           width: Get.width,
@@ -160,8 +158,24 @@ class ScanView extends GetView<ScanController> {
                         ),
                 ],
               )
-            : const Center(
-                child: Text("Can't connect to the camera"),
+            : Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text("Can't connect to the camera"),
+                    const SizedBox(height: 4),
+                    GestureDetector(
+                      onTap: () => controller.loadCamera(),
+                      child: const Text(
+                        "Try again!",
+                        style: TextStyle(
+                          color: Color(0xff69be55),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
       ),
     );

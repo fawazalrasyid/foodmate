@@ -14,6 +14,7 @@ class ScanController extends GetxController {
   late final PredictObjectService _predictObjectService;
 
   final isScanning = false.obs;
+  final isInitializeCamera = false.obs;
 
   late Rx<XFile?> objectImage = Rx<XFile?>(null);
 
@@ -53,14 +54,18 @@ class ScanController extends GetxController {
         enableAudio: false,
       );
 
-      cameraCtrl!.initialize().then((_) {}).catchError((Object e) {
+      cameraCtrl!.initialize().then((_) {
+        isInitializeCamera.value = true;
+      }).catchError((Object e) {
         if (e is CameraException) {
           switch (e.code) {
             case 'CameraAccessDenied':
               Fluttertoast.showToast(msg: "Camera permissions are denied");
+              isInitializeCamera.value = false;
               break;
             default:
               Fluttertoast.showToast(msg: "Terjadi masalah, coba lagi");
+              isInitializeCamera.value = false;
               break;
           }
         }
